@@ -67,7 +67,13 @@ export const PersonDetailDialog = ({
                 height: "400px",
                 objectPosition: "bottom",
               }}
-              image={`https://image.tmdb.org/t/p/w500${person?.profile_path}`}
+              image={
+                person?.profile_path
+                  ? `https://image.tmdb.org/t/p/w500${person.profile_path}`
+                  : person.gender === 2
+                  ? "/male.jpg"
+                  : "/female.jpg"
+              }
               title={person?.name}
             />
           </Grid>

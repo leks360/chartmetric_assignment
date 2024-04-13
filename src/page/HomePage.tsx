@@ -1,7 +1,7 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
 import { CelebrityList } from "./CelebrityList";
 
-import { useEffect, useState } from "react";
+import { useEffect,  useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CelebrityType } from "../types/celebrityTypes";
 const options = {

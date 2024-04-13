@@ -22,16 +22,18 @@ export const NavBar = () => {
   return (
     <Box>
       <AppBar
-        position="static"
+        position="sticky"
         sx={{
           backgroundColor: "#04364A",
-          position: "sticky",
+          // position: "sticky",
           top: 0,
+
           zIndex: 1000,
         }}
       >
         <Box
           sx={{
+            height: "100%",
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
@@ -44,42 +46,44 @@ export const NavBar = () => {
             alt="logo"
             style={{ height: "65px", width: "150px" }}
           />
-          <Box>
-            <TextField
-              inputRef={textFieldRef}
-              size="small"
-              variant="outlined"
-              sx={{ backgroundColor: "white" }}
-              placeholder="Search..."
-              onChange={(e) => debouncedHandleSearchTermChange(e.target.value)}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <SearchOutlined />
-                  </InputAdornment>
-                ),
-                endAdornment: (
-                  <InputAdornment
-                    position="end"
-                    // style={{ display: showClearIcon }}
-                  >
-                    <Tooltip title={"Clear search"}>
-                      <IconButton>
-                        <DeleteOutline
-                          onClick={() => {
-                            if (textFieldRef.current) {
-                              textFieldRef.current.value = "";
-                            }
-                            debouncedHandleSearchTermChange("");
-                          }}
-                        />
-                      </IconButton>
-                    </Tooltip>
-                  </InputAdornment>
-                ),
-              }}
-            />
-          </Box>
+
+          <TextField
+            inputRef={textFieldRef}
+            size="small"
+            variant="outlined"
+            sx={{ backgroundColor: "white", borderRadius: 0 }}
+            inputProps={{
+              borderRadius: 0,
+            }}
+            placeholder="Search..."
+            onChange={(e) => debouncedHandleSearchTermChange(e.target.value)}
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchOutlined />
+                </InputAdornment>
+              ),
+              endAdornment: (
+                <InputAdornment
+                  position="end"
+                  // style={{ display: showClearIcon }}
+                >
+                  <Tooltip title={"Clear search"}>
+                    <IconButton>
+                      <DeleteOutline
+                        onClick={() => {
+                          if (textFieldRef.current) {
+                            textFieldRef.current.value = "";
+                          }
+                          debouncedHandleSearchTermChange("");
+                        }}
+                      />
+                    </IconButton>
+                  </Tooltip>
+                </InputAdornment>
+              ),
+            }}
+          />
         </Box>
       </AppBar>
       <Box>

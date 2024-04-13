@@ -28,7 +28,7 @@ export const PeopleCard = ({ celebrityData, onSelect }: Props): JSX.Element => {
       variant="outlined"
     >
       <Badge
-        badgeContent={celebrityData.id}
+        badgeContent={Math.round(celebrityData.popularity)}
         max={999}
         color="success"
         // color="#BC7FCD"
@@ -66,7 +66,13 @@ export const PeopleCard = ({ celebrityData, onSelect }: Props): JSX.Element => {
               width: "100%",
               objectPosition: "top",
             }}
-            image={`https://image.tmdb.org/t/p/w400${celebrityData.profile_path}`}
+            image={
+              celebrityData?.profile_path
+                ? `https://image.tmdb.org/t/p/w400${celebrityData.profile_path}`
+                : celebrityData.gender === 2
+                ? "/male.jpg"
+                : "/female.jpg"
+            }
             title={celebrityData.name}
           />
 
