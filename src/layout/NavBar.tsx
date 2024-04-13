@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 import _debounce from "lodash/debounce";
 import AppBar from "@mui/material/AppBar";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef, useState } from "react";
 import { HomePage } from "../page/HomePage";
 
 export const NavBar = () => {
