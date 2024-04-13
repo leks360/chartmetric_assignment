@@ -18,7 +18,7 @@ export const PeopleCard = ({ celebrityData, onSelect }: Props): JSX.Element => {
       onClick={() => onSelect(celebrityData)}
       sx={{
         height: 260,
-        width: 180,
+        width: "100%",
         "&:hover": {
           transform: "scale3d(1.05, 1.05, 2)",
           transitionProperty: "transform",
@@ -50,14 +50,23 @@ export const PeopleCard = ({ celebrityData, onSelect }: Props): JSX.Element => {
         }}
       >
         <CardContent sx={{ width: "100%", p: 0, m: 0 }}>
+          {/* <img
+            alt="gg"
+            onLoad={() => "sad"}
+            srcSet={`https://image.tmdb.org/t/p/w200${celebrityData.profile_path},
+            https://image.tmdb.org/t/p/w500${celebrityData.profile_path}`}
+          /> */}
           <CardMedia
+            onLoad={() => {
+              console.log("LOADED");
+            }}
             sx={{
               objectFit: "cover",
               height: "100%",
               width: "100%",
               objectPosition: "top",
             }}
-            image={`https://image.tmdb.org/t/p/w500${celebrityData.profile_path}`}
+            image={`https://image.tmdb.org/t/p/w400${celebrityData.profile_path}`}
             title={celebrityData.name}
           />
 

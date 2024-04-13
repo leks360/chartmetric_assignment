@@ -4,19 +4,21 @@ import {
   Card,
   CardContent,
   CardMedia,
+  Chip,
   Dialog,
   DialogActions,
   DialogContent,
   DialogTitle,
   Grid,
+  IconButton,
   Rating,
   Tooltip,
   Typography,
 } from "@mui/material";
 
 import {
+  CancelPresentationOutlined,
   LiveTvOutlined,
-  Theaters,
   TheatersOutlined,
 } from "@mui/icons-material";
 
@@ -30,22 +32,41 @@ export const PersonDetailDialog = ({
   person,
   onClose,
 }: Props): JSX.Element => {
-  if (!person) return;
+  if (!person) return <div></div>;
   return (
     <Dialog open={open} fullWidth maxWidth="md">
-      <DialogTitle>
-        <Typography variant="h5" fontWeight={600}>
-          {person.name}
-        </Typography>
-      </DialogTitle>
-      <DialogContent sx={{ pb: 0, mb: 0 }}>
-        <Grid container>
+      {/* <DialogTitle>
+      </DialogTitle> */}
+      <DialogContent sx={{ p: 0, m: 0 }}>
+        <Chip
+          sx={{
+            position: "absolute",
+            top: "10px",
+            ml: 2,
+            backdropFilter: "blur(8px)",
+            boxShadow: "inset 0px 0px 35px 0px #3C3633",
+          }}
+          label={
+            <Typography
+              variant="h5"
+              fontWeight={600}
+              fontSize={28}
+              color="white"
+            >
+              {person.name}
+            </Typography>
+          }
+          variant="outlined"
+        />
+
+        <Grid container spacing={2} alignItems="stretch">
           <Grid item xs={12} md={5}>
             <CardMedia
               sx={{
                 objectFit: "cover",
-                height: "380px",
-                width: "100%",
+
+                // width: "100%",
+                height: "400px",
                 objectPosition: "bottom",
               }}
               image={`https://image.tmdb.org/t/p/w500${person?.profile_path}`}
@@ -57,33 +78,44 @@ export const PersonDetailDialog = ({
             xs={12}
             md={7}
             sx={{
-              pl: 4,
-              position: "relative",
-              height: "380px",
+              //   m: 1,
+              pl: 2,
+              //   mr:1,
+
+              //   position: "relative",
+              height: "400px",
               overflow: "hidden",
               display: "flex",
               flexDirection: "column",
             }}
           >
-            <Typography variant="body1" fontSize={20} sx={{ lineHeight: 1.6 }}>
+            <Typography
+              variant="body1"
+              fontSize={20}
+              mt={2}
+              px={2}
+              sx={{ lineHeight: 1.6 }}
+              fontWeight={600}
+            >
               Gender : {person?.gender === 1 ? "Female" : "Male" || "unknown"}
               <br />
               Popularity : {person?.popularity || "NA"}
             </Typography>
 
-            <Typography mt={1} variant="body1" fontSize={18} fontWeight={600}>
+            <Typography
+              px={2}
+              mt={1}
+              variant="body1"
+              fontSize={18}
+              fontWeight={300}
+            >
               Known For
             </Typography>
             <Box
               sx={{
-                // height: "inherit",
-                // height: "100%",
-                // overflow: "hidden",
-                // width: "100%",
+                px: 2,
                 overflowY: "scroll",
                 overflowX: "hidden",
-                // display: "flex",
-                // flexWrap: "wrap",
               }}
             >
               {person?.known_for?.map((item) => {
@@ -99,7 +131,10 @@ export const PersonDetailDialog = ({
                         gap: 1,
                         p: 0,
                         m: 0,
-                        height: "100%",
+                        "&:last-child": {
+                          paddingBottom: 0,
+                        },
+                        height: "120px",
                       }}
                     >
                       <CardMedia
@@ -111,10 +146,10 @@ export const PersonDetailDialog = ({
                           m: 0,
                           flexShrink: 0,
                         }}
-                        image={`https://image.tmdb.org/t/p/w500${item?.poster_path}`}
+                        image={`https://image.tmdb.org/t/p/w200${item?.poster_path}`}
                         title={person?.name}
                       />
-                      <Box sx={{ p: 1 }}>
+                      <Box sx={{ p: 1.5 }}>
                         <Box
                           sx={{
                             display: "flex",
@@ -169,9 +204,12 @@ export const PersonDetailDialog = ({
           </Grid>
         </Grid>
       </DialogContent>
-      <DialogActions>
-        <Button onClick={onClose}>Close</Button>
-      </DialogActions>
+      <IconButton
+        sx={{ position: "absolute", top: "5px", right: "5px" }}
+        onClick={onClose}
+      >
+        <CancelPresentationOutlined />
+      </IconButton>
     </Dialog>
   );
 };

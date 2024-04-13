@@ -8,7 +8,6 @@ root.render(
   <React.StrictMode>
     <>
       <NavBar />
-      <div>sadqwe</div>
     </>
   </React.StrictMode>
 );
