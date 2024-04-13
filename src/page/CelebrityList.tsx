@@ -1,4 +1,4 @@
-import { Box, Grid } from "@mui/material";
+import { Grid } from "@mui/material";
 import { PeopleCard } from "../components/PeopleCard";
 import { PersonDetailDialog } from "../components/PersonDetailDialog";
 import { useState } from "react";

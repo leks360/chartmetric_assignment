@@ -1,14 +1,11 @@
 import {
   Box,
-  Button,
   Card,
   CardContent,
   CardMedia,
   Chip,
   Dialog,
-  DialogActions,
   DialogContent,
-  DialogTitle,
   Grid,
   IconButton,
   Rating,
@@ -21,6 +18,7 @@ import {
   LiveTvOutlined,
   TheatersOutlined,
 } from "@mui/icons-material";
+import { Knownfor } from "../types/celebrityTypes";
 
 interface Props {
   open: boolean;
@@ -118,7 +116,7 @@ export const PersonDetailDialog = ({
                 overflowX: "hidden",
               }}
             >
-              {person?.known_for?.map((item) => {
+              {person?.known_for?.map((item: Knownfor) => {
                 return (
                   <Card
                     key={item.id}
@@ -185,15 +183,17 @@ export const PersonDetailDialog = ({
                           </Typography>
                         </Box>
                         <Typography mt={1} variant="body2" fontWeight={100}>
-                          {new Date(item.release_date).toLocaleDateString(
-                            "en-US",
-                            {
-                              weekday: "long",
-                              year: "numeric",
-                              month: "long",
-                              day: "numeric",
-                            }
-                          )}
+                          {item?.release_date
+                            ? new Date(item.release_date).toLocaleDateString(
+                                "en-US",
+                                {
+                                  weekday: "long",
+                                  year: "numeric",
+                                  month: "long",
+                                  day: "numeric",
+                                }
+                              )
+                            : "Not Known"}
                         </Typography>
                       </Box>
                     </CardContent>

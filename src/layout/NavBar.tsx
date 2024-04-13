@@ -1,8 +1,4 @@
-import {
-  ClearAllOutlined,
-  DeleteOutline,
-  SearchOutlined,
-} from "@mui/icons-material";
+import { DeleteOutline, SearchOutlined } from "@mui/icons-material";
 import {
   Box,
   IconButton,
@@ -18,7 +14,7 @@ import { HomePage } from "../page/HomePage";
 export const NavBar = () => {
   const [searchTerm, setSearchTerm] = useState<string | undefined>(undefined);
 
-  const textFieldRef = useRef(null);
+  const textFieldRef = useRef<HTMLTextAreaElement>(null);
   const debouncedHandleSearchTermChange = _debounce((newSearchTerm: string) => {
     setSearchTerm(newSearchTerm);
   }, 300); // Adjust the debounce delay as needed
