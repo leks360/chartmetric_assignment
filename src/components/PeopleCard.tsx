@@ -57,9 +57,6 @@ export const PeopleCard = ({ celebrityData, onSelect }: Props): JSX.Element => {
             https://image.tmdb.org/t/p/w500${celebrityData.profile_path}`}
           /> */}
           <CardMedia
-            onLoad={() => {
-              console.log("LOADED");
-            }}
             sx={{
               objectFit: "cover",
               height: "100%",

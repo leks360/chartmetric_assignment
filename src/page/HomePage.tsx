@@ -1,15 +1,14 @@
 import { Box, CircularProgress, Container, Typography } from "@mui/material";
-import { CelebrityList } from "./CelebrityList";
+import { CelebrityList } from "../components/CelebrityList";
 
-import { useEffect,  useState } from "react";
+import { useEffect, useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { CelebrityType } from "../types/celebrityTypes";
 const options = {
   method: "GET",
   headers: {
     accept: "application/json",
-    Authorization:
-      "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI4MDJhODNjYjA2M2QwZmMwN2YwZjE3NWExM2EyYTY4MiIsInN1YiI6IjY2MTZlNWExYmJkMGIwMDBlN2QxM2I1NiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.fFN58QQPv68wN_YJBvkOSOF_qh-XIi4Vegf2VqZpIC8",
+    Authorization: "Bearer " + process.env.REACT_APP_API_TOKEN,
   },
 };
 interface Props {
@@ -21,7 +20,6 @@ export const HomePage = ({ searchTerm }: Props): JSX.Element => {
   const [celebritylistData, setCelebrityListData] = useState<CelebrityType[]>(
     []
   );
-
   const [totalCelebrity, setTotal] = useState(0);
   const [page, setPage] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
@@ -34,7 +32,6 @@ export const HomePage = ({ searchTerm }: Props): JSX.Element => {
 
         if (paginated) {
           setCelebrityListData((cur) => {
-            console.log(cur, searchTerm, response.results);
             return [...cur, ...response.results];
           });
         } else {

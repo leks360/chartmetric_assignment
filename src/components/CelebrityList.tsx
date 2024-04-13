@@ -1,6 +1,6 @@
 import { Grid } from "@mui/material";
-import { PeopleCard } from "../components/PeopleCard";
-import { PersonDetailDialog } from "../components/PersonDetailDialog";
+import { PeopleCard } from "./PeopleCard";
+import { PersonDetailDialog } from "./PersonDetailDialog";
 import { useState } from "react";
 import { CelebrityType } from "../types/celebrityTypes";
 
